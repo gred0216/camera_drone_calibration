@@ -1,0 +1,14 @@
+<launch>
+    <arg name="camera_image"   default="/camera/color/image_raw" />
+    <arg name="vicon_odom"     default="/vicon/race1/odom" />
+    <arg name="save_path"      default="$(find camera_drone_calibration)/result/result.yaml"/>
+
+    <rosparam command="load" file="$(find camera_drone_calibration)/config/params.yaml" />
+
+    <node name="camera_drone_calibration" pkg="camera_drone_calibration" type="camera_drone_calibration.py" output="screen">
+        <param name="camera_image" value="$(arg camera_image)" />
+        <param name="vicon_odom" value="$(arg vicon_odom)" />
+        <param name="save_path" value="$(arg save_path)" />
+
+    </node>
+</launch>
